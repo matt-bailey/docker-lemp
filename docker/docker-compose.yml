@@ -1,15 +1,8 @@
 version: '2'
 
 services:
-  ubuntu:
-    build: ./docker/ubuntu/
-    links:
-      - php
-    volumes_from:
-      - data
-
   nginx:
-    build: ./docker/nginx/
+    build: ./config/nginx/
     ports:
       - 8080:80
     links:
@@ -18,24 +11,31 @@ services:
       - data
 
   php:
-    build: ./docker/php/
+    build: ./config/php/
     expose:
       - 9000
     volumes_from:
       - data
+    volumes:
+      - "~/.composer:/root/.composer"
+      - "~/.ssh:/root/.ssh"
 
   composer:
-    build: ./docker/composer/
+    build: ./config/composer/
+    links:
+      - php
     volumes_from:
       - data
 
   build-tools:
-    build: ./docker/build-tools/
+    build: ./config/build-tools/
+    links:
+      - php
     volumes_from:
       - data
 
   data:
-    image: php:7.0-fpm
+    build: ./config/php/
     volumes:
-      - /Users/mattbailey/Sites/strax/sites/site:/var/www
+      - ../site:/var/www/html
     command: "true"

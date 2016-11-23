@@ -2,6 +2,4 @@
 
 > Simple Docker LEMP stack
 
-Just for me, messing about...
-
-`http://localhost:8080/`
+Just for me, it probably doesn't work...
