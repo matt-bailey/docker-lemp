@@ -5,7 +5,7 @@ services:
     build: ./config/nginx/
     ports:
       - 8080:80
-    links:
+    depends_on:
       - php
     volumes_from:
       - data
@@ -16,26 +16,11 @@ services:
       - 9000
     volumes_from:
       - data
-    volumes:
-      - "~/.composer:/root/.composer"
-      - "~/.ssh:/root/.ssh"
-
-  composer:
-    build: ./config/composer/
-    links:
-      - php
-    volumes_from:
-      - data
-
-  build-tools:
-    build: ./config/build-tools/
-    links:
-      - php
-    volumes_from:
-      - data
 
   data:
     build: ./config/php/
     volumes:
       - ../site:/var/www/html
+      - ~/.composer:/root/.composer
+      - ~/.ssh:/root/.ssh
     command: "true"
