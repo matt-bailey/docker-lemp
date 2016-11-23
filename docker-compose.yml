@@ -1,6 +1,13 @@
 version: '2'
 
 services:
+  ubuntu:
+    build: ./docker/ubuntu/
+    links:
+      - php
+    volumes_from:
+      - data
+
   nginx:
     build: ./docker/nginx/
     ports:
@@ -8,17 +15,27 @@ services:
     links:
       - php
     volumes_from:
-      - app
+      - data
 
   php:
     build: ./docker/php/
     expose:
       - 9000
     volumes_from:
-      - app
+      - data
 
-  app:
+  composer:
+    build: ./docker/composer/
+    volumes_from:
+      - data
+
+  build-tools:
+    build: ./docker/build-tools/
+    volumes_from:
+      - data
+
+  data:
     image: php:7.0-fpm
     volumes:
-      - .:/var/www/html
+      - /Users/mattbailey/Sites/strax/sites/site:/var/www
     command: "true"
