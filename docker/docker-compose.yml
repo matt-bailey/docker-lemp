@@ -4,23 +4,28 @@ services:
   nginx:
     build: ./config/nginx/
     ports:
-      - 8080:80
-    depends_on:
+      - 80:80
+    links:
       - php
     volumes_from:
-      - data
+      - unison
 
   php:
     build: ./config/php/
-    expose:
-      - 9000
-    volumes_from:
-      - data
-
-  data:
-    build: ./config/php/
     volumes:
-      - ../site:/var/www/html
       - ~/.composer:/root/.composer
       - ~/.ssh:/root/.ssh
-    command: "true"
+    volumes_from:
+      - unison
+    working_dir: /Users/mpkb/Projects/personal/docker-lemp/site
+
+  unison:
+    build: ./config/unison
+    environment:
+      - UNISON_VERSION=2.48.3
+      - UNISON_WORKING_DIR=/Users/mpkb/Projects/personal/docker-lemp
+    ports:
+      - 5000:5000
+    volumes:
+      - /Users/mpkb/Projects/personal/docker-lemp
+    working_dir: /Users/mpkb/Projects/personal/docker-lemp

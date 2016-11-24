@@ -1,4 +1,5 @@
 #!/bin/bash
 
+echo 'cd /Users/mpkb/Projects/personal/docker-lemp/site' >> ~/.bashrc
 export TERM=vt100
 exec "$@"
