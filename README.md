@@ -14,6 +14,8 @@ For performance I'm also using `bind-address` to connect to my host machine's Ma
 
 ## Requirements
 
+[Docker](https://www.docker.com/), obviously.
+
 I'm on a Mac, so...
 
 ```
@@ -22,13 +24,17 @@ brew install fswatch
 brew install socat
 ```
 
-## Settings
+## Setup
 
-A few environment variables are exposed in `.env`.
+Create a `docker/.env` file using the sample provided, or add/edit the following environment variables manually:
 
-## Assumptions
+```
+PROJECT_DIR=/path/to/this/project
+APP_DIR=/path/to/this/project/site
+WEBROOT_DIR=/path/to/this/project/site/pub
+```
 
-Assumes there is a `sites/pub/` directory (if it's not, modify the files in this repo accordingly). Create it before you start up your containers:
+Assumes there is a `site/pub/` directory. Create it before you start up your containers:
 
 ```
 mkdir -p site/pub
@@ -36,9 +42,9 @@ mkdir -p site/pub
 
 ## Start or stop the 'things'
 
-Assumes you are one level up from the `docker/` dir.
+Run one level up from the `docker/` dir.
 
 ```
-./docker/startdocker
-./docker/stopdocker
+./docker/start
+./docker/stop
 ```
