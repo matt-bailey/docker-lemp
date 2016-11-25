@@ -2,7 +2,7 @@
 
 > Simple Docker LEMP stack
 
-Just for me, it probably won't work for you. It's opinionated...
+Just for me, it may not work for you. It's opinionated...
 
 ## Includes
 
@@ -14,11 +14,17 @@ For performance I'm also using `bind-address` to connect to my host machine's Ma
 
 ## Requirements
 
+I'm on a Mac, so...
+
 ```
 brew install unison
 brew install fswatch
 brew install socat
 ```
+
+## Settings
+
+A few environment variables are exposed in `.env`.
 
 ## Assumptions
 

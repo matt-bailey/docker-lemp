@@ -1,6 +1,10 @@
 FROM leighmcculloch/unison
 
-# WORKDIR /Users/mpkb/Projects/personal/docker-lemp
+ARG webrootdir
+ARG projectdir
+
+ENV UNISON_VERSION=2.48.3
+ENV UNISON_WORKING_DIR=$projectdir
 
 # this is for the other images before running unison sync
-RUN mkdir -p /Users/mpkb/Projects/personal/docker-lemp/site/pub
+RUN mkdir -p $webrootdir

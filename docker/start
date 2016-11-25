@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $1 == "rebuild" ]; then
+if [ "$1" = "rebuild" ]; then
     cd docker && docker-compose build ; cd -
 fi
 ! ifconfig | grep 172.16.123.1 && sudo ifconfig lo0 alias 172.16.123.1

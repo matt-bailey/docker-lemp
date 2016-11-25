@@ -1,11 +1,14 @@
 FROM php:7.0-fpm
 
+ARG webrootdir
+ENV WEBROOT_DIR=$webrootdir
+
 RUN apt-get update \
     && apt-get install -y libxml2-dev libmcrypt4 libmcrypt-dev \
         libxslt1-dev libicu-dev libpng12-dev libjpeg-dev \
         zlib1g-dev git build-essential checkinstall libssl-dev \
         libfreetype6-dev libjpeg62-turbo-dev apt-utils cron \
-        libfontconfig vim nano
+        libfontconfig vim
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 
@@ -28,8 +31,6 @@ RUN /root/setup.sh
 EXPOSE 9000
 
 RUN apt-get install -y openssh-server
-
-COPY ssh /root/.ssh
 
 COPY exim.conf /etc/exim4/update-exim4.conf.conf
 
