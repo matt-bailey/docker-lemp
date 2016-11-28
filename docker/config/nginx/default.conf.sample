@@ -4,8 +4,8 @@ upstream php70 {
 
 server {
     listen 80 default_server;
-    server_name *.dev;
-    root /Users/mpkb/Projects/personal/docker-lemp/site/pub;
+    server_name domain.dev;
+    root /path/to/this/project/site/pub;
     server_name ~^(?<subdomain>\w+)\.dev$;
     index index.html index.php;
 
