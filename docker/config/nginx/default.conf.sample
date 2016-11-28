@@ -4,9 +4,7 @@ upstream php70 {
 
 server {
     listen 80 default_server;
-    server_name *.dev;
-    root /path/to/this/project/site/pub;
-    server_name ~^(?<subdomain>\w+)\.dev$;
+    root /path/to/site/pub;
     index index.html index.php;
 
     charset utf-8;
@@ -35,27 +33,6 @@ server {
         fastcgi_buffer_size 16k;
         fastcgi_buffers 4 16k;
     }
-
-    gzip on;
-        gzip_disable "msie6";
-
-        gzip_comp_level 6;
-        gzip_min_length 1100;
-        gzip_buffers 16 8k;
-        gzip_proxied any;
-        gzip_types
-            text/plain
-            text/css
-            text/js
-            text/xml
-            text/javascript
-            application/javascript
-            application/x-javascript
-            application/json
-            application/xml
-            application/xml+rss
-            image/svg+xml;
-        gzip_vary on;
 
     location ~ /\.ht {
         deny all;
