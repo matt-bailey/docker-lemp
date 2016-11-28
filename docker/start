@@ -10,6 +10,6 @@ cd -
 echo "Starting docker daemon for PHP Storm"
 socat TCP-LISTEN:2375,reuseaddr,fork,bind=localhost UNIX-CONNECT:/var/run/docker.sock &
 echo "Running filesystem sync process"
-fswatch -o . | xargs -n1 -I{} unison . 'socket://localhost:5000/' -ignore 'Path {var,pub/static,.idea}' -ignore 'Name node_modules' -auto -batch
+fswatch -o . | xargs -n1 -I{} unison . 'socket://localhost:5000/' -ignore 'Path {.idea.git,pub/static,var}' -ignore 'Name node_modules' -auto -batch
 echo "Killing all socat processes"
 killall socat
