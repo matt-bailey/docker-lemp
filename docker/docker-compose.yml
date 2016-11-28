@@ -3,20 +3,18 @@ version: '2'
 services:
   nginx:
     build: ./config/nginx/
-    container_name: ${PROJECT_NAME}-nginx
     links:
-      - php7fpm
+      - php
     ports:
       - 80:80
     volumes_from:
       - unison
 
-  php7fpm:
+  php:
     build:
-      context: ./config/php7fpm/
+      context: ./config/php/
       args:
         webrootdir: ${WEBROOT_DIR}
-    container_name: php7fpm
     volumes:
       - ~/.composer:/root/.composer
       - ~/.ssh:/root/.ssh
@@ -30,7 +28,6 @@ services:
       args:
         webrootdir: ${WEBROOT_DIR}
         projectdir: ${PROJECT_DIR}
-    container_name: ${PROJECT_NAME}-unison
     ports:
       - 5000:5000
     volumes:

@@ -4,7 +4,7 @@ upstream php70 {
 
 server {
     listen 80 default_server;
-    server_name domain.dev;
+    server_name *.dev;
     root /path/to/this/project/site/pub;
     server_name ~^(?<subdomain>\w+)\.dev$;
     index index.html index.php;
