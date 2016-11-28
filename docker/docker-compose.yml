@@ -14,10 +14,7 @@ services:
     build:
       context: ./config/php/
       args:
-        webrootdir: ${WEBROOT_DIR}
-    volumes:
-      - ~/.composer:/root/.composer
-      - ~/.ssh:/root/.ssh
+        appdir: ${APP_DIR}
     volumes_from:
       - unison
     working_dir: ${APP_DIR}

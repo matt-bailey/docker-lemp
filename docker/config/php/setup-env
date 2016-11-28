@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo 'cd $WEBROOT_DIR' >> ~/.bashrc
+echo 'cd $APP_DIR' >> ~/.bashrc
 export TERM=vt100
 exec "$@"

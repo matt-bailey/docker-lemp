@@ -1,7 +1,7 @@
 FROM php:7.0-fpm
 
-ARG webrootdir
-ENV WEBROOT_DIR=$webrootdir
+ARG appdir
+ENV APP_DIR=$appdir
 
 RUN apt-get update \
     && apt-get install -y libxml2-dev libmcrypt4 libmcrypt-dev \
