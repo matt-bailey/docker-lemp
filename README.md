@@ -26,19 +26,32 @@ brew install socat
 
 ## Setup
 
+### Environment variables
+
 Create a `docker/.env` file using the sample provided, or add/edit the following environment variables manually:
 
 ```
+PROJECT_NAME=project
 PROJECT_DIR=/path/to/this/project
 APP_DIR=/path/to/this/project/site
 WEBROOT_DIR=/path/to/this/project/site/pub
 ```
+
+### Nginx config
+
+Create a `docker/config/nginx/default.conf` file specific to your environment. You can use the sample file as an example.
+
+### Webroot
 
 Assumes there is a `site/pub/` directory. Create it before you start up your containers:
 
 ```
 mkdir -p site/pub
 ```
+
+### Vhost
+
+Add a vhost record on your host machine pointing to the web root, domain name and IP address of the site.
 
 ## Start or stop the 'things'
 
