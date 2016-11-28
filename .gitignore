@@ -3,4 +3,5 @@
 *.sublime-*
 
 docker/.env
+docker/config/nginx/default.conf
 site/
